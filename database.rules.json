@@ -1,0 +1,28 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "taken": {
+      ".read": true,
+      "$item": {
+        ".write": "$item.matches(/^(equinox|boxers|dress-socks|cotton-socks|aquaphor|sunscreen|argan-oil|sneakers|ssd)$/) && (!data.exists() || !newData.exists())",
+        ".validate": "newData.hasChildren(['name', 'at'])",
+        "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
+        "at": { ".validate": "newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    },
+    "wishes": {
+      ".read": true,
+      "$id": {
+        ".write": true,
+        ".validate": "newData.hasChildren(['name', 'text', 'at'])",
+        "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
+        "text": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 140" },
+        "link": { ".validate": "newData.isString() && newData.val().length <= 500" },
+        "at": { ".validate": "newData.isNumber()" },
+        "$other": { ".validate": false }
+      }
+    }
+  }
+}
