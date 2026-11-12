@@ -5,7 +5,7 @@
     "taken": {
       ".read": true,
       "$item": {
-        ".write": "$item.matches(/^(equinox|boxers|dress-socks|cotton-socks|aquaphor|sunscreen|argan-oil|sneakers|ssd)$/) && (!data.exists() || !newData.exists())",
+        ".write": "$item.matches(/^[a-z0-9-]{1,40}$/) && (!data.exists() || !newData.exists())",
         ".validate": "newData.hasChildren(['name', 'at'])",
         "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 40" },
         "at": { ".validate": "newData.isNumber()" },
